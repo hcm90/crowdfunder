@@ -1,0 +1,14 @@
+<h1>My Projects</h1>
+
+
+<% @user.projects.each do |project| %>
+<h3><%= @project.title %> </h3>
+<ul>
+  <li><%= @project.description %></li>
+  <li><%= @project.goal %></li>
+  <li><%= @project.start_date %></li>
+  <li><%= @project.end_date %></li>
+</ul>
+<% end %>
+
+<%= link_to "All Projects", projects_path %>
