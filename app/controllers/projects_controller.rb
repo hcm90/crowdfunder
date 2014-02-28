@@ -1,15 +1,30 @@
 class ProjectsController < ApplicationController
+  before_filter :not_authenticated, :only => [:show, :create]
+
   def index
     @projects = Project.all
   end
 
   def show
     @project = Project.find(params[:id])
+    @pledge_total_amount = 0
+    all_pledges = @project.pledges.all
+    all_pledges.each do |p|
+      p.breakpoint_id.each do |l|
+        l.breakpont.amount += p.amount
+
+
+      #@pledge_total_amount += p.amount
+    end
+    
+    @breakpoint = @project.breakpoints.all
   if (current_user.id == @project.owner_id)
     @breakpoint = @project.breakpoints.build
+    @pledge = @project.pledges.build
+  end
+  @pledge_total_amount
   end
 
-  end
 
   def new
     @project = Project.new

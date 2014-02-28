@@ -1,5 +1,7 @@
 <h1>Project#show</h1>
 
+<li><%= @pledge_total_amount %></li>
+
 <h3><%= @project.title %> </h3>
 <ul>
   <li><%= @project.description %></li>
@@ -7,7 +9,6 @@
   <li><%= @project.start_date %></li>
   <li><%= @project.end_date %></li>
 </ul>
-
 
 <% if current_user.id == @project.owner_id %>
 
@@ -48,10 +49,18 @@
 <% @project.breakpoints.each do |bp| %>
 <ul>
   <li><%= bp.description  %></li>
-
+  <li><%= bp.amount %></li>
+  <li><%= form_for([@project, @pledge]) do |f| %>
+      <%= f.hidden_field :breakpoint_id, :value => bp.id %>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    <% end %>
+    </li>
 </ul>
 <% end %>
 
 
 <%= link_to "All Projects", projects_path %>
+
 

@@ -5,6 +5,7 @@ class BreakpointsController < ApplicationController
 
   def show
     @breakpoint = Breakpoint.find(params[:id])
+    @pledge = @user.pledges.build
   end
 
   def new

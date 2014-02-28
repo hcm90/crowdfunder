@@ -1,34 +1,5 @@
 Crowdfunder::Application.routes.draw do
-  get "sessions/create"
-  get "sessions/destroy"
-  get "pledges/index"
-  get "pledges/show"
-  get "pledges/new"
-  get "pledges/edit"
-  get "pledges/create"
-  get "pledges/update"
-  get "pledges/destroy"
-  get "breakpoints/index"
-  get "breakpoints/show"
-  get "breakpoints/new"
-  get "breakpoints/edit"
-  get "breakpoints/create"
-  get "breakpoints/update"
-  get "breakpoints/destroy"
-  get "projects/index"
-  get "projects/show"
-  get "projects/new"
-  get "projects/edit"
-  get "projects/create"
-  get "projects/update"
-  get "projects/destroy"
-  get "users/index"
-  get "users/show"
-  get "users/new"
-  get "users/edit"
-  get "users/create"
-  get "users/update"
-  get "users/destroy"
+  
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
@@ -36,7 +7,10 @@ Crowdfunder::Application.routes.draw do
   resources :sessions
   resources :projects do 
     resources :breakpoints
+    resources :pledges, :only => [:create, :new, :show]
   end
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

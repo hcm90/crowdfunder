@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140226202907) do
+ActiveRecord::Schema.define(version: 20140227220848) do
 
   create_table "breakpoints", force: true do |t|
     t.integer  "amount"
@@ -22,11 +22,11 @@ ActiveRecord::Schema.define(version: 20140226202907) do
   end
 
   create_table "pledges", force: true do |t|
-    t.integer  "amount"
     t.integer  "project_id"
-    t.integer  "contributor_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "breakpoint_id"
   end
 
   create_table "projects", force: true do |t|

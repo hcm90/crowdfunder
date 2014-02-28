@@ -11,4 +11,14 @@
 </ul>
 <% end %>
 
+
+
+<% @user.pledges.each do |pledge| %>
+<li><%= @pledge.amount %> </li>
+<% end %>
+
+
+
+
 <%= link_to "All Projects", projects_path %>
+
