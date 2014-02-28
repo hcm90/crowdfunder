@@ -1,6 +1,6 @@
 <h1>Project#show</h1>
 
-<li><%= @pledge_total_amount %></li>
+<li><%= @pledges_total %></li>
 
 <h3><%= @project.title %> </h3>
 <ul>
@@ -52,7 +52,7 @@
   <li><%= bp.amount %></li>
   <li><%= form_for([@project, @pledge]) do |f| %>
       <%= f.hidden_field :breakpoint_id, :value => bp.id %>
-      <div class="actions">
+      <div id="pledge_submit">
         <%= f.submit %>
       </div>
     <% end %>

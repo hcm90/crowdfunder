@@ -7,22 +7,14 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-    @pledge_total_amount = 0
-    all_pledges = @project.pledges.all
-    all_pledges.each do |p|
-      p.breakpoint_id.each do |l|
-        l.breakpont.amount += p.amount
-
-
-      #@pledge_total_amount += p.amount
-    end
-    
     @breakpoint = @project.breakpoints.all
   if (current_user.id == @project.owner_id)
     @breakpoint = @project.breakpoints.build
     @pledge = @project.pledges.build
   end
-  @pledge_total_amount
+
+    @pledges_total = @project.contributions.sum(:amount)
+
   end
 
 
